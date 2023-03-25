@@ -1,9 +1,10 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  font-family: "Raleway", sans-serif;
 }
 
 :root {
@@ -47,7 +48,7 @@ input,
 textarea,
 select,
 button {
-  font: 400 1rem "Roboto", sans-serif;
+  font: 400 1rem "Poppins", sans-serif;
 }
 
 button {
@@ -63,27 +64,8 @@ h1,
 h2,
 h3 {
   margin: 0;
+  font-family: "Raleway", sans-serif;
 }
+`;
 
-.style_modalCreateEventCategoriesAndAreas__hW374 .ant-modal-content {
-  border-radius: 0.5rem;
-}
-
-.style_modalCreateEventCategoriesAndAreas__hW374 .ant-modal-header {
-  border-radius: 0.5rem;
-  border-bottom: 0;
-}
-
-.style_modalSticketDefaultTicket__opmYe .ant-modal-header {
-  background: var(--blue-200);
-  color: white;
-  font: 700 10px Poppins, sans-serif;
-}
-
-.modalEditTicket .ant-modal-header {
-  background: var(--blue-200);
-}
-
-.modalSticketDefaultTicket .ant-modal-header {
-  background: blue;
-}
+export default GlobalStyle;
