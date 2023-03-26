@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 interface Props {
   backgroundColor: string;
@@ -6,10 +6,17 @@ interface Props {
 }
 
 export const Container = styled.button<Props>`
-  color: ${props => (props.color)};
-  background-color: ${props => (props.backgroundColor)};
-
-  border: 1px solid black;
+  width: 100%;
+  height: 3rem;
+  color: ${(props) => props.color};
+  background-color: var(--${(props) => props.backgroundColor});
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
   border-radius: 0.25rem;
   padding: 0.25rem 1rem;
+
+  &:hover {
+    background-color: var(--dark-${(props) => props.backgroundColor});
+  }
 `;
