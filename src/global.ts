@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -10,15 +10,26 @@ const GlobalStyle = createGlobalStyle`
 :root {
   --background: #e5e5e5;
 
+  --button-border: #EBF0FF;
+
+  --text-color: #9098B1;
+  --title-color: #223263;
+
   --black: #000000;
   --white: #ffffff;
-  --white-smoke: #f6f6f6;
+  --dark-white: #f6f6f6;
 
   --gray-40: #eeeeee;
   --gray-50: #e0e0e0;
   --gray-200: #bdbdbd;
   --gray-500: #787878;
 
+  --blue: #40BFFF;
+  --dark-blue: #018aeb;
+
+  --red: #FF4858;
+  --dark-red: #CF3240;
+  
   --blue-10: #00c0ff;
   --blue-50: #018aeb;
   --blue-150: #0043d1;
@@ -65,6 +76,60 @@ h2,
 h3 {
   margin: 0;
   font-family: "Raleway", sans-serif;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@keyframes expand-container {
+  from {
+    width: 100px;
+    height: 100px;
+    border-radius: 1rem;
+  }
+  
+  to {
+    width: 300px;
+    height: 600px;
+    border-radius: 1rem;
+  }
+}
+@keyframes container-blue {
+  from {
+    opacity: 0;
+  }
+  
+  to {
+    opacity: 1;
+    top: 15%;
+  }
+}
+@keyframes container-white {
+  from {
+    opacity: 1;
+  }
+  
+  to {
+    opacity: 0;
+    top: 15%;
+  }
+}
+@keyframes container-form {
+  25% {
+    opacity: 0;
+    transform: translateY(10%) translateZ(0);
+
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateY(10%) translateZ(0);
+
+  }
 }
 `;
 
