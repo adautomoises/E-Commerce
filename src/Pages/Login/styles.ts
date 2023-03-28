@@ -10,19 +10,15 @@ export const Container = styled.div`
 
 export const ContainerForm = styled.form`
   width: 100%;
-  height: 80%;
-
+  height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-
-  margin-top: 5%;
   padding: 1.5rem;
-
   position: absolute;
   opacity: 0;
-  transform: translateY(10%) translateZ(0);
+  transform: translateZ(0);
   animation: container-form 1s ease-in-out 500ms forwards;
 `;
 

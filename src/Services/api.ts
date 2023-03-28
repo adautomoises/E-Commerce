@@ -5,7 +5,9 @@ const defaultInterceptor = {
     const token = localStorage.getItem("@e-commerce:token");
 
     if (token) {
-      config.headers.Authorization = `Bearer ${localStorage.getItem("@e-commerce:token")}`;
+      config.headers.Authorization = `Bearer ${localStorage.getItem(
+        "@e-commerce:token"
+      )}`;
     }
 
     return config;
@@ -29,16 +31,20 @@ api.interceptors.response.use(
   (response) => {
     return response;
   },
-  async (error) => {
-    const error401 = error.response?.status;
-
-    if (error401 === 401) {
-      localStorage.removeItem("id");
+  async (errors) => {
+    const error = errors.response?.status;
+    
+    if (error === 401) {
       localStorage.removeItem("@e-commerce:token");
 
       alert("Sessão Expirada! Por favor, faça login novamente.");
       window.location.href = "/entrar";
+    } else if (error === 403) {
+      localStorage.removeItem("@e-commerce:token");
+
+      alert("Não autorizado! Por favor, faça login novamente.");
+      window.location.href = "/login";
     }
-    return Promise.reject(error);
+    return Promise.reject(errors);
   }
 );

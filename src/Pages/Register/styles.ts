@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+
+// const animacao = {
+//   containerA: ()  => keyframes `
+
+//   `,
+// }
 
 export const Container = styled.div`
   width: 100vw;
@@ -10,19 +17,15 @@ export const Container = styled.div`
 
 export const ContainerForm = styled.form`
   width: 100%;
-  height: 80%;
-
+  height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-
-  margin-top: 5%;
   padding: 1.5rem;
-
   position: absolute;
   opacity: 0;
-  transform: translateY(10%) translateZ(0);
+  transform: translateZ(0);
   animation: container-form 1s ease-in-out 500ms forwards;
 `;
 
@@ -125,12 +128,15 @@ export const ContainerLogin = styled.div`
   gap: 1rem;
   color: var(--text-color);
   margin-top: 1rem;
+  font-size: 12px;
 `;
 
 export const LoginButton = styled.button`
   color: var(--blue);
   background: none;
   border: none;
+  font-size: 12px;
+  font-weight: bold;
   &:hover {
     color: var(--dark-blue);
   }

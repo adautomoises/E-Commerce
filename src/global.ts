@@ -37,18 +37,6 @@ const GlobalStyle = createGlobalStyle`
   --azul-250: #0044d1;
 }
 
-@media (min-width: 1080px) {
-  html {
-    font-size: 93.75%;
-  }
-}
-
-@media (min-width: 720px) {
-  html {
-    font-size: 87.5%;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--black);
@@ -105,7 +93,7 @@ h3 {
   
   to {
     opacity: 1;
-    top: 15%;
+    top: 10%;
   }
 }
 @keyframes container-white {
@@ -115,19 +103,19 @@ h3 {
   
   to {
     opacity: 0;
-    top: 15%;
+    top: 10%;
   }
 }
 @keyframes container-form {
   25% {
     opacity: 0;
-    transform: translateY(10%) translateZ(0);
+    transform: translateZ(0);
 
   }
   
   100% {
     opacity: 1;
-    transform: translateY(10%) translateZ(0);
+    transform: translateZ(0);
 
   }
 }

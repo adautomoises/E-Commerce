@@ -1,45 +1,32 @@
-import React, { useState } from "react";
-import { Button } from "../../Components/Button";
-import { useNavigate } from "react-router-dom";
+import * as yup from 'yup';
+import { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import {
-  Container,
-  ContainerForm,
-  Title,
-  Subtitle,
-  ContainerAnimation,
-  ContainerBlueIcon,
-  ContainerWhiteIcon,
-  ContainerLogin,
-  LoginButton,
-} from "./styles";
-import { AxiosError } from "axios";
-
+import { api } from '../../Services/api';
+import { Button } from '../../Components/Button';
+import { InputComponent } from '../../Components/InputComponent';
 import { ReactComponent as BlueIconSvg } from "../../Assets/blue_icon.svg";
 import { ReactComponent as WhiteIconSvg } from "../../Assets/white_icon.svg";
+import { Container, ContainerForm, Title, Subtitle, ContainerAnimation, ContainerBlueIcon, ContainerWhiteIcon, ContainerLogin, LoginButton, } from "./styles";
 
-import {
-  VisibilityOff,
-  Visibility,
-  Email,
-  Lock,
-  Person,
-} from "@mui/icons-material";
-import {
-  FormControl,
-  FormHelperText,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-} from "@mui/material";
+interface IErrorResponse {
+  message: string;
+}
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { api } from "../../Services/api";
+interface FormData {
+  email: string;
+  fullName: string;
+  password: string;
+  confirmPassword: string;
+}
 
 const schema = yup.object().shape({
-  email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
+  email: yup
+  .string()
+  .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'E-mail inválido')
+  .required('Campo obrigatório'),
   fullName: yup.string().required("Campo obrigatório"),
   password: yup
     .string()
@@ -51,41 +38,17 @@ const schema = yup.object().shape({
     .required("Campo obrigatório"),
 });
 
-interface IErrorResponse {
-  message: string;
-}
-
-interface Data {
-  email: string;
-  fullName: string;
-  password: string;
-  confirmPassword: string;
-}
-
 export function Register() {
   const navigate = useNavigate();
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Data>({
+  } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit: SubmitHandler<Data> = (formData) => {
+  const onSubmit: SubmitHandler<FormData> = (formData) => {
     const data = {
       email: formData.email,
       fullName: formData.fullName,
@@ -95,7 +58,8 @@ export function Register() {
     api
       .post("/account/create", data)
       .then((response) => {
-        console.log(response.data);
+        alert(response.data.fullName + ", sua conta foi criada com sucesso!");
+        navigate("/login");
       })
       .catch((error: AxiosError<IErrorResponse>) => {
         if (error.response) {
@@ -116,206 +80,10 @@ export function Register() {
         <ContainerForm onSubmit={handleSubmit(onSubmit)}>
           <Title>Vamos Começar</Title>
           <Subtitle>Crie uma nova conta</Subtitle>
-          <FormControl
-            sx={{
-              width: "100%",
-              marginBottom: "0.5rem",
-              "&:hover fieldset": {
-                borderColor: (errors.fullName?.message as string)
-                  ? "var(--red)"
-                  : email !== ""
-                  ? "var(--blue)"
-                  : "var(--button-border)",
-              },
-            }}
-            variant="outlined"
-          >
-            <OutlinedInput
-              id="fullName"
-              type="text"
-              sx={{
-                "& fieldset": {
-                  borderColor: (errors.fullName?.message as string)
-                    ? "var(--red)"
-                    : fullName !== ""
-                    ? "var(--blue)"
-                    : "var(--button-border)",
-                },
-              }}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Person
-                    color={
-                      (errors.fullName?.message as string)
-                        ? "error"
-                        : fullName !== ""
-                        ? "primary"
-                        : "inherit"
-                    }
-                  />
-                </InputAdornment>
-              }
-              placeholder="Nome Completo"
-              {...register("fullName")}
-              onChange={(event) => {
-                setFullName(event.target.value);
-              }}
-            />
-            <FormHelperText sx={{ color: "red" }}>
-              {(errors.fullName?.message as string) || " "}
-            </FormHelperText>
-          </FormControl>
-          <FormControl
-            sx={{
-              width: "100%",
-              marginBottom: "0.5rem",
-              "&:hover fieldset": {
-                borderColor: (errors.email?.message as string)
-                  ? "var(--red)"
-                  : email !== ""
-                  ? "var(--blue)"
-                  : "var(--button-border)",
-              },
-            }}
-            variant="outlined"
-          >
-            <OutlinedInput
-              id="email"
-              type="text"
-              sx={{
-                "& fieldset": {
-                  borderColor: (errors.email?.message as string)
-                    ? "var(--red)"
-                    : email !== ""
-                    ? "var(--blue)"
-                    : "var(--button-border)",
-                },
-              }}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Email
-                    color={
-                      (errors.email?.message as string)
-                        ? "error"
-                        : email !== ""
-                        ? "primary"
-                        : "inherit"
-                    }
-                  />
-                </InputAdornment>
-              }
-              placeholder="Email"
-              {...register("email")}
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
-            />
-            <FormHelperText sx={{ color: "red" }}>
-              {(errors.email?.message as string) || " "}
-            </FormHelperText>
-          </FormControl>
-          <FormControl
-            sx={{ width: "100%", marginBottom: "0.5rem" }}
-            variant="outlined"
-          >
-            <OutlinedInput
-              id="password"
-              type={showPassword ? "text" : "password"}
-              sx={{
-                "& fieldset": {
-                  borderColor: (errors.password?.message as string)
-                    ? "var(--red)"
-                    : password !== ""
-                    ? "var(--blue)"
-                    : "var(--button-border)",
-                },
-              }}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Lock
-                    color={
-                      (errors.password?.message as string)
-                        ? "error"
-                        : password !== ""
-                        ? "primary"
-                        : "inherit"
-                    }
-                  />
-                </InputAdornment>
-              }
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              placeholder="Senha"
-              {...register("password")}
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-            />
-            <FormHelperText sx={{ color: "red" }}>
-              {(errors.password?.message as string) || " "}
-            </FormHelperText>
-          </FormControl>
-          <FormControl
-            sx={{ width: "100%", marginBottom: "0.5rem" }}
-            variant="outlined"
-          >
-            <OutlinedInput
-              id="confirmPassword"
-              type={showPassword ? "text" : "password"}
-              sx={{
-                "& fieldset": {
-                  borderColor: (errors.confirmPassword?.message as string)
-                    ? "var(--red)"
-                    : confirmPassword !== ""
-                    ? "var(--blue)"
-                    : "var(--button-border)",
-                },
-              }}
-              startAdornment={
-                <InputAdornment position="start">
-                  <Lock
-                    color={
-                      (errors.confirmPassword?.message as string)
-                        ? "error"
-                        : confirmPassword !== ""
-                        ? "primary"
-                        : "inherit"
-                    }
-                  />
-                </InputAdornment>
-              }
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
-              placeholder="Confirmar senha"
-              {...register("confirmPassword")}
-              onChange={(event) => {
-                setConfirmPassword(event.target.value);
-              }}
-            />
-            <FormHelperText sx={{ color: "red" }}>
-              {(errors.confirmPassword?.message as string) || " "}
-            </FormHelperText>
-          </FormControl>
+          <InputComponent errors={errors.fullName?.message} placeholder="Nome Completo" iconname="Person" inputtype="text" {...register('fullName')} />
+          <InputComponent errors={errors.email?.message} placeholder="Email" iconname="Email" inputtype="text" {...register('email')} />
+          <InputComponent errors={errors.password?.message} placeholder="Senha" iconname="Lock" inputtype="password" {...register('password')} />
+          <InputComponent errors={errors.confirmPassword?.message} placeholder="Confirmar senha" iconname="Lock" inputtype="password" {...register('confirmPassword')} />
           <Button
             color={"white"}
             type={"submit"}

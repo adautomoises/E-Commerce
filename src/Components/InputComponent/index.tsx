@@ -1,27 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 import * as Icons from "@mui/icons-material";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import {
   FormControl,
+  FormHelperText,
   IconButton,
   InputAdornment,
-  InputLabel,
   OutlinedInput,
+  OutlinedInputProps,
 } from "@mui/material";
 
 type IconProps = {
-  iconName: keyof typeof Icons;
+  iconname: keyof typeof Icons;
+  errors: string | undefined;
+  inputtype: "password" | "text";
 };
 
-export function InputComponent(
-  props: IconProps & React.InputHTMLAttributes<HTMLInputElement>
-) {
+export const InputComponent = forwardRef<
+  HTMLInputElement,
+  IconProps & OutlinedInputProps
+>((props, ref) => {
   const [showPassword, setShowPassword] = useState(false);
+  const [filled, setFilled] = useState("");
+  const [inputType, setInputType] = useState<"password" | "text">(
+    props.inputtype
+  );
 
-  const { iconName, placeholder, type } = props;
-  const IconComponent = Icons[iconName];
+  const { iconname, placeholder, inputtype, errors } = props;
+  const IconComponent = Icons[iconname];
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+    setInputType(inputType === "password" ? "text" : "password");
+  };
 
   const handleMouseDownPassword = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -30,20 +41,32 @@ export function InputComponent(
   };
 
   return (
-    <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-      <InputLabel htmlFor="outlined">{placeholder}</InputLabel>
+    <FormControl
+      sx={{ width: "100%", marginBottom: "0.5rem" }}
+      variant="outlined"
+    >
       <OutlinedInput
-        id={"outlined" + iconName}
-        type={
-          type === "password" ? (showPassword ? "text" : "password") : "text"
-        }
+        id={`outlined-${placeholder}`}
+        type={inputType}
+        sx={{
+          fontSize: "12px",
+          "& fieldset": {
+            borderColor: errors
+              ? "var(--red)"
+              : filled !== ""
+              ? "var(--blue)"
+              : "var(--button-border)",
+          },
+        }}
         startAdornment={
           <InputAdornment position="start">
-            <IconComponent />
+            <IconComponent
+              color={errors ? "error" : filled !== "" ? "primary" : "inherit"}
+            />
           </InputAdornment>
         }
         endAdornment={
-          type === "password" && (
+          inputtype === "password" && (
             <InputAdornment position="end">
               <IconButton
                 aria-label="toggle password visibility"
@@ -56,9 +79,16 @@ export function InputComponent(
             </InputAdornment>
           )
         }
-        label={placeholder}
         placeholder={placeholder}
+        {...props}
+        ref={ref}
+        onChange={(event) => {
+          setFilled(event.target.value);
+        }}
       />
+      <FormHelperText sx={{ color: "var(--red)", height: "1rem" }}>
+        {errors !== "undefined" && errors}
+      </FormHelperText>
     </FormControl>
   );
-}
+});
