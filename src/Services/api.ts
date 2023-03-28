@@ -19,7 +19,7 @@ const defaultInterceptor = {
 };
 
 export const api = Axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://e-commerce-382004.rj.r.appspot.com",
 });
 
 api.interceptors.request.use(

@@ -1,12 +1,14 @@
 import * as yup from 'yup';
+import { useState } from 'react';
 import { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { api } from '../../Services/api';
-import { Button } from '../../Components/Button';
 import { InputComponent } from '../../Components/InputComponent';
+import { ButtonComponent } from '../../Components/ButtonComponent';
+import { SnackbarComponent } from '../../Components/SnackbarComponent';
 import { ReactComponent as BlueIconSvg } from "../../Assets/blue_icon.svg";
 import { ReactComponent as WhiteIconSvg } from "../../Assets/white_icon.svg";
 import { Container, ContainerForm, Title, Subtitle, ContainerAnimation, ContainerBlueIcon, ContainerWhiteIcon, ContainerLogin, LoginButton, } from "./styles";
@@ -47,8 +49,17 @@ export function Register() {
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
+  const [loading, setLoading] = useState(false);
+  const [severitySnackbar, setSeveritySnackbar] = useState<"success" | "error" | "warning" | "info">("info");
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  
+  const handleCloseSnackbar = () => {
+    setShowSnackbar(false);
+  };
 
   const onSubmit: SubmitHandler<FormData> = (formData) => {
+    setLoading(true);
     const data = {
       email: formData.email,
       fullName: formData.fullName,
@@ -58,18 +69,28 @@ export function Register() {
     api
       .post("/account/create", data)
       .then((response) => {
-        alert(response.data.fullName + ", sua conta foi criada com sucesso!");
-        navigate("/login");
+        setSeveritySnackbar("success");
+        setSnackbarMessage("Sua conta foi criada com sucesso! Redirecionando para login...");
+        setShowSnackbar(true);
+        setTimeout(() => {
+          navigate('/login')
+        }, 3000);
       })
       .catch((error: AxiosError<IErrorResponse>) => {
         if (error.response) {
-          alert(error.response.data.message);
+          setSeveritySnackbar("error");
+          setSnackbarMessage(error.response.data.message);
+          setShowSnackbar(true);
+          setLoading(false);
         }
       });
   };
 
   return (
     <Container>
+      {showSnackbar && (
+        <SnackbarComponent message={snackbarMessage} showSnackbar={showSnackbar} handleClose={handleCloseSnackbar} severity={severitySnackbar} />
+      )}
       <ContainerAnimation className="center">
         <ContainerBlueIcon>
           <BlueIconSvg />
@@ -84,11 +105,11 @@ export function Register() {
           <InputComponent errors={errors.email?.message} placeholder="Email" iconname="Email" inputtype="text" {...register('email')} />
           <InputComponent errors={errors.password?.message} placeholder="Senha" iconname="Lock" inputtype="password" {...register('password')} />
           <InputComponent errors={errors.confirmPassword?.message} placeholder="Confirmar senha" iconname="Lock" inputtype="password" {...register('confirmPassword')} />
-          <Button
-            color={"white"}
+          <ButtonComponent
+            isLoading={loading}
             type={"submit"}
-            backgroundColor={"blue"}
             label={"Cadastrar"}
+            color={"primary"}
           />
           <ContainerLogin>
             Já possui uma conta?

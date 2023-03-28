@@ -13,7 +13,7 @@ import { AxiosError } from "axios";
 
 import { ReactComponent as BlueIconSvg } from "../../Assets/blue_icon.svg";
 import { ReactComponent as WhiteIconSvg } from "../../Assets/white_icon.svg";
-import { Button } from "../../Components/Button";
+import { ButtonComponent } from "../../Components/ButtonComponent";
 
 interface IErrorResponse {
   message: string;
@@ -94,19 +94,17 @@ export function Home() {
               </>
             ) : (
               <>
-                <Button
-                  color={"white"}
+                <ButtonComponent
+                  color={"primary"}
                   type={"button"}
-                  backgroundColor={"blue"}
                   label={"LOGIN"}
                   onClick={() => {
                     navigate("/login");
                   }}
                 />
-                <Button
-                  color={"white"}
+                <ButtonComponent
+                  color={"primary"}
                   type={"button"}
-                  backgroundColor={"blue"}
                   label={"CADASTRAR"}
                   onClick={() => {
                     navigate("/register");
