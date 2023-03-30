@@ -137,7 +137,7 @@ export function ForgetPassword() {
   const ThirdStep: SubmitHandler<FormData> = (formData) => {
     setLoading(true);
     api
-      .patch('/login/recovery-password/change', {
+      .get('/login/recovery-password/change', {
         params: {
           email: email,
           password: formData.password,
