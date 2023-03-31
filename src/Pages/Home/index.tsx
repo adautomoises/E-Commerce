@@ -3,6 +3,7 @@ import { Content, PosterImage, PosterTitle, PromotionalPoster } from './styles';
 import { Body } from './styles';
 import promotionImage from '../../Assets/images/PromotionImage.png';
 import { FloatCard } from '../../Components/FloatCard';
+import { BestSeller } from '../../Components/BestSeller';
 
 export function Home() {
   return (
@@ -14,6 +15,7 @@ export function Home() {
           <PosterTitle>50% de desconto</PosterTitle>
           <FloatCard />
         </PromotionalPoster>
+        <BestSeller />
       </Content>
     </Body>
   );
