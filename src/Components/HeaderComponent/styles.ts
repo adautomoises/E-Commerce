@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
+  max-width: 1920px;
   width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem 2rem;
+
   select {
     border: none;
+    background: none;
   }
   section {
     display: flex;
@@ -13,7 +19,6 @@ export const Header = styled.div`
     div {
       display: flex;
       align-items: center;
-      gap: 1rem;
 
       span {
         font-size: 18px;
@@ -22,16 +27,27 @@ export const Header = styled.div`
       }
     }
   }
-  padding: 0 5rem;
 `;
 
 export const MenuItems = styled.div`
   width: 100%;
-  display: flex;
   justify-content: flex-end;
-  align-items: center;
-  button {
-    font-weight: 500;
-    font-size: 24px;
+
+  gap: 5rem;
+  div {
+    width: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      border: none;
+      background: none;
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    display: none;
   }
 `;

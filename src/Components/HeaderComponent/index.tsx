@@ -28,10 +28,18 @@ export function HeaderComponent() {
           <span>E-Commerce</span>
         </div>
         <MenuItems>
-          <button>Home</button>
-          <button>Produtos</button>
-          <button>Promoções</button>
-          <button>Contato</button>
+          <div>
+            <button>Home</button>
+          </div>
+          <div>
+            <button>Produtos</button>
+          </div>
+          <div>
+            <button>Promoções</button>
+          </div>
+          <div>
+            <button>Contato</button>
+          </div>
         </MenuItems>
       </section>
     </Header>
