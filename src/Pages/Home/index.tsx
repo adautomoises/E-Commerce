@@ -1,22 +1,21 @@
-import { HeaderComponent } from '../../Components/HeaderComponent';
-import { Content, PosterImage, PosterTitle, PromotionalPoster } from './styles';
-import { Body } from './styles';
-import promotionImage from '../../Assets/images/PromotionImage.png';
-import { FloatCard } from '../../Components/FloatCard';
-import { BestSeller } from '../../Components/BestSeller';
+import { Body, Content, Info } from "./styles";
+import { HeaderComponent } from "../../Components/HeaderComponent";
+import { FloatCard } from "../../Components/Home/FloatCard";
+import { BestSeller } from "../../Components/Home/BestSeller";
+import { AdNews } from "../../Components/Home/AdNews";
+import { PromotionalPoster } from "../../Components/Home/PromotionalPoster";
 
 export function Home() {
   return (
     <Body>
       <HeaderComponent />
       <Content>
-        <PromotionalPoster>
-          <PosterImage src={promotionImage} alt="Cartaz Promocional" />
-          <PosterTitle>50% de desconto</PosterTitle>
-          <FloatCard />
-        </PromotionalPoster>
+        <PromotionalPoster />
+        <FloatCard />
         <BestSeller />
+        <AdNews />
       </Content>
+      <Info></Info>
     </Body>
   );
 }

@@ -1,43 +1,59 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 15rem;
+  max-width: 1080px;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 15rem;
+  @media (max-width: 1080px) {
+    margin-top: 1rem;
+  }
 `;
 
 export const MenuItems = styled.div`
-  width: 100%;
+  max-width: 100%;
   gap: 3rem;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    padding: 0 2rem;
+  }
+
   button {
     border: none;
     background: none;
     font-size: 22px;
+    &:hover {
+      color: var(--blue);
+    }
   }
 `;
 
 export const GridProductCards = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 26rem);
+  grid-template-columns: repeat(auto-fit, 15rem);
   justify-content: center;
-  padding: 2rem;
   grid-row-gap: 2rem;
   column-gap: 2rem;
 `;
 
 export const ProductCard = styled.div`
-  width: 420px;
-  height: 400px;
-  border-radius: 1rem;
-  border: 3px solid var(--button-border);
+  width: 100%;
+  border-radius: 0.1rem;
   overflow: hidden;
+  border: 3px solid var(--button-border);
 `;
 
 export const ProductName = styled.span`
-  width: 100%;
+  width: 90%;
 
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -47,15 +63,27 @@ export const ProductName = styled.span`
   text-align: center;
 
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
   color: var(--title-color);
+`;
+
+export const ProductHoverImg = styled.button`
+  width: 100%;
+  border: none;
+  background: none;
+
+  img:hover {
+    opacity: 0.2;
+  }
+  div:hover {
+    position: absolute;
+    display: flex;
+  }
 `;
 
 export const ProductImage = styled.img`
   width: 100%;
-  height: 70%;
   object-fit: cover;
-  border-radius: 0.5rem;
 `;
 
 export const ProductInfo = styled.div`
@@ -69,27 +97,26 @@ export const ProductValues = styled.div`
 `;
 
 export const ProductPrice = styled.span`
-  font-size: 14px;
+  font-size: 10px;
   color: var(--text-color);
   text-decoration: line-through;
 `;
 
 export const ProductDiscount = styled.span`
   font-weight: bold;
-  font-size: 14px;
+  font-size: 10px;
   color: var(--red);
 `;
 
 export const ProductCurrentPrice = styled.span`
-  font-family: 'Raleway';
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   color: var(--blue);
 `;
 
 export const MoreProducts = styled.button`
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   color: var(--blue);
   border: none;
   background: none;

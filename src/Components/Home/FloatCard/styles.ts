@@ -1,21 +1,31 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  width: 90%;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 1rem;
+  transform: translate(-50%, -25%);
   overflow: hidden;
+  @media (max-width: 1080px) {
+    position: static;
+    transform: none;
+  }
 `;
 
 export const ProductCard = styled.div`
   position: relative;
-  width: 420px;
-  height: 350px;
+  width: 100%;
+  height: 300px;
 `;
 
 export const ProductTitle = styled.span`
-  width: 50%;
+  width: 40%;
   position: absolute;
   top: 5%;
   left: 10%;
@@ -28,7 +38,7 @@ export const ProductTitle = styled.span`
   text-align: start;
 
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
   color: var(--title-color);
 `;
 
@@ -49,14 +59,14 @@ export const ProductInfo = styled.div`
 `;
 
 export const ProductPrice = styled.span`
-  font-size: 18px;
+  font-size: 14px;
   color: var(--text-color);
   text-decoration: line-through;
 `;
 
 export const ProductDiscount = styled.span`
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   color: var(--red);
 `;
 
@@ -64,8 +74,8 @@ export const ProductCurrentPrice = styled.span`
   position: absolute;
   bottom: 5%;
   right: 5%;
-  font-family: 'Raleway';
+  font-family: "Raleway";
   font-weight: bold;
-  font-size: 30px;
+  font-size: 26px;
   color: var(--blue);
 `;
