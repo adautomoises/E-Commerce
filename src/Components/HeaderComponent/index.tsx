@@ -1,6 +1,6 @@
 //import React, { useState, useEffect } from 'react';
 import {
-  Header,
+  Container,
   TopHeader,
   BottomHeader,
   LogoContainer,
@@ -16,7 +16,7 @@ import { Menu, Person } from "@mui/icons-material";
 
 export function HeaderComponent() {
   return (
-    <Header>
+    <Container>
       <TopHeader>
         <select defaultValue={"R$"}>
           <option value={"U$"}>U$</option>
@@ -48,6 +48,6 @@ export function HeaderComponent() {
           </IconButton>
         </MobileMenuItems>
       </BottomHeader>
-    </Header>
+    </Container>
   );
 }

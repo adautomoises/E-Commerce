@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
-export const Header = styled.div`
-  max-width: 1080px;
+export const Container = styled.div`
   width: 100%;
-
   margin: 0 auto;
-  text-align: center;
 `;
 
 export const TopHeader = styled.section`
@@ -29,10 +26,12 @@ export const TopHeader = styled.section`
     }
   }
 `;
+
 export const BottomHeader = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #fafafb;
   padding: 0 3rem;
   @media (max-width: 768px) {
     padding: 0 1rem;

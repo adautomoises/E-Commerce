@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 1080px;
+  max-width: 1920px;
   margin: 0 auto;
   width: 100%;
   height: 100%;
@@ -9,7 +9,20 @@ export const Container = styled.div`
   gap: 1rem;
   margin-top: 15rem;
   @media (max-width: 1080px) {
-    margin-top: 1rem;
+    margin-top: 15rem;
+    /* margin-top: 1rem; */
+  }
+  @media (max-width: 1440px) {
+    margin-top: 15rem;
+    max-width: 1440px;
+  }
+  @media (max-width: 1080px) {
+    margin-top: 15rem;
+    max-width: 1080px;
+  }
+  @media (max-width: 768px) {
+    margin-top: 15rem;
+    max-width: 768px;
   }
 `;
 
@@ -121,4 +134,8 @@ export const MoreProducts = styled.button`
   border: none;
   background: none;
   border-bottom: 3px solid var(--blue);
+  &:hover {
+    color: var(--dark-blue);
+    border-bottom: 3px solid var(--dark-blue);
+  }
 `;

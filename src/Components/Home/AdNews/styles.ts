@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 600px;
+  height: 800px;
   margin-top: 5rem;
   background-color: var(--blue);
 `;
 
 export const PosterImage = styled.div`
   position: relative;
-  max-width: 1080px;
-  width: 100%;
+  max-width: 1920px;
+  width: 90%;
   height: 100%;
   margin: 0 auto;
 
@@ -19,6 +19,16 @@ export const PosterImage = styled.div`
   align-items: flex-start;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 1440px) {
+    max-width: 1440px;
+  }
+  @media (max-width: 1080px) {
+    max-width: 1080px;
+  }
+  @media (max-width: 768px) {
+    max-width: 768px;
+  }
 `;
 
 export const Title = styled.span`
@@ -48,6 +58,10 @@ export const Button = styled.button`
   border: none;
   background: none;
   border-bottom: 3px solid var(--white);
+  &:hover {
+    color: var(--dark-white);
+    border-bottom: 3px solid var(--dark-white);
+  }
 `;
 
 export const Image = styled.img`
@@ -55,4 +69,5 @@ export const Image = styled.img`
   width: 60%;
   top: -15%;
   right: -10%;
+  pointer-events: none;
 `;

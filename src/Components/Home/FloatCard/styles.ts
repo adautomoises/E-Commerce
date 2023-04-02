@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  max-width: 900px;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -12,9 +12,18 @@ export const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -25%);
   overflow: hidden;
-  @media (max-width: 1080px) {
+  /* @media (max-width: 1080px) {
     position: static;
     transform: none;
+  } */
+  @media (max-width: 1440px) {
+    max-width: 1440px;
+  }
+  @media (max-width: 1080px) {
+    max-width: 1080px;
+  }
+  @media (max-width: 768px) {
+    max-width: 768px;
   }
 `;
 
