@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  position: relative;
 `;
 
 export const TopHeader = styled.section`
@@ -61,13 +62,62 @@ export const MenuItems = styled.div`
   }
 `;
 
-export const CategoryButton = styled.button`
-  border: none;
-  background: none;
-  font-weight: 500;
-  font-size: 24px;
+export const CategoryButton = styled.div`
+  min-width: 10%;
+  text-align: center;
+  span {
+    font-weight: 500;
+    font-size: 24px;
+  }
   &:hover {
     color: var(--blue);
+  }
+  &:hover span {
+    position: relative;
+
+    ::after {
+      content: "\u25B2";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--dark-white);
+    }
+  }
+  :last-child span {
+    ::after {
+      content: "";
+    }
+  }
+  &:hover {
+    .dropdown-content {
+      padding: 0.5rem 1rem;
+      display: block;
+      color: var(--black);
+    }
+  }
+`;
+
+export const DropdownContent = styled.div`
+  display: none;
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 2;
+  background-color: var(--white);
+  border-radius: 0.25rem;
+  border-top: 2px solid var(--dark-white);
+  min-width: 50%;
+  @media (max-width: 1920px) {
+    min-width: 70%;
+  }
+  ul {
+    li {
+      a {
+        font-size: 16px;
+      }
+      list-style: none;
+    }
   }
 `;
 

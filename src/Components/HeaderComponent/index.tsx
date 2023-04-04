@@ -1,4 +1,4 @@
-//import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from "react";
 import {
   Container,
   TopHeader,
@@ -8,6 +8,7 @@ import {
   MenuItems,
   CategoryButton,
   MobileMenuItems,
+  DropdownContent,
 } from "./styles";
 import { ReactComponent as BlueIcon } from "../../Assets/blue_icon.svg";
 import { Button, IconButton } from "@mui/material";
@@ -37,10 +38,48 @@ export function HeaderComponent() {
           <LogoName>E-Comm</LogoName>
         </LogoContainer>
         <MenuItems>
-          <CategoryButton>Home</CategoryButton>
-          <CategoryButton>Produtos</CategoryButton>
-          <CategoryButton>Promoções</CategoryButton>
-          <CategoryButton>Contato</CategoryButton>
+          <CategoryButton>
+            <span>Home</span>
+            <DropdownContent className="dropdown-content">
+              <ul>
+                <li>
+                  <a href="bestseller">Mais Vendidos</a>
+                </li>
+                <li>
+                  <a href="news">Novidades</a>
+                </li>
+              </ul>
+            </DropdownContent>
+          </CategoryButton>
+          <CategoryButton>
+            <span>Produtos</span>
+            <DropdownContent className="dropdown-content">
+              <ul>
+                <li>
+                  <a href="masculino">Masculinos</a>
+                </li>
+                <li>
+                  <a href="feminino">Femininos</a>
+                </li>
+                <li>
+                  <a href="infantil">Infantil</a>
+                </li>
+              </ul>
+            </DropdownContent>
+          </CategoryButton>
+          <CategoryButton>
+            <span>Promoções</span>
+            <DropdownContent className="dropdown-content">
+              <ul>
+                <li>
+                  <a href="ofertas">Ofertas</a>
+                </li>
+              </ul>
+            </DropdownContent>
+          </CategoryButton>
+          <CategoryButton>
+            <span>Contato</span>
+          </CategoryButton>
         </MenuItems>
         <MobileMenuItems>
           <IconButton>

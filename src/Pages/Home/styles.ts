@@ -16,6 +16,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  z-index: 1;
 `;
 
 export const Info = styled.div`
