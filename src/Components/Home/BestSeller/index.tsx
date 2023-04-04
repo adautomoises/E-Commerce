@@ -7,9 +7,9 @@ import {
   ProductCard,
   ProductCurrentPrice,
   ProductDiscount,
-  ProductHoverImg,
   ProductImage,
   ProductInfo,
+  HeartButton,
   ProductName,
   ProductPrice,
   ProductValues,
@@ -19,6 +19,7 @@ import product_one from "../../../Assets/images/product_one.png";
 import product_two from "../../../Assets/images/product_two.png";
 import product_three from "../../../Assets/images/product_three.png";
 import Rating from "@mui/material/Rating";
+import { AddShoppingCart, Favorite } from "@mui/icons-material";
 
 export function BestSeller() {
   return (
@@ -33,10 +34,11 @@ export function BestSeller() {
       </MenuItems>
       <GridProductCards>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">
@@ -47,10 +49,11 @@ export function BestSeller() {
           </ProductInfo>
         </ProductCard>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">
@@ -61,10 +64,11 @@ export function BestSeller() {
           </ProductInfo>
         </ProductCard>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">
@@ -75,10 +79,11 @@ export function BestSeller() {
           </ProductInfo>
         </ProductCard>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">
@@ -89,10 +94,11 @@ export function BestSeller() {
           </ProductInfo>
         </ProductCard>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">
@@ -103,10 +109,11 @@ export function BestSeller() {
           </ProductInfo>
         </ProductCard>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">
@@ -117,10 +124,11 @@ export function BestSeller() {
           </ProductInfo>
         </ProductCard>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">
@@ -131,10 +139,11 @@ export function BestSeller() {
           </ProductInfo>
         </ProductCard>
         <ProductCard>
-          <ProductHoverImg>
-            <ProductImage src={product_one} />
-          </ProductHoverImg>
+          <ProductImage src={product_one} />
           <ProductInfo className="center">
+            <HeartButton>
+              <Favorite color="secondary" />
+            </HeartButton>
             <ProductName>Nike Air Max 270 React</ProductName>
             <Rating size="small" name="read-only" value={4} readOnly />
             <ProductValues className="center">

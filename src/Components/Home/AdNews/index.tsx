@@ -16,8 +16,8 @@ export function AdNews() {
       <PosterImage>
         <Title>Adidas Men Running Sneakers</Title>
         <SubTitle>Performance and design. Taken right to the edge.</SubTitle>
-        <Button>SHOP NOW</Button>
         <Image src={SapatoAzul} alt="Novidade de Anunciante" />
+        <Button>SHOP NOW</Button>
       </PosterImage>
     </Container>
   );

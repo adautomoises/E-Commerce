@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { IconButton } from "@mui/material";
 
 export const Container = styled.div`
   max-width: 1920px;
@@ -56,13 +57,73 @@ export const GridProductCards = styled.div`
   justify-content: center;
   grid-row-gap: 2rem;
   column-gap: 2rem;
+  @media (max-width: 512px) {
+    grid-row-gap: 0;
+    column-gap: 0;
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ProductCard = styled.div`
+  position: relative;
   width: 100%;
   border-radius: 0.1rem;
   overflow: hidden;
   border: 3px solid var(--button-border);
+
+  :first-child {
+    ::before {
+      content: "HOT";
+      width: max-content;
+      padding: 0 2px;
+      border-radius: 10%;
+      color: var(--white);
+      font-size: 12px;
+      background-color: var(--red);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  @media (max-width: 512px) {
+    display: flex;
+    border: none;
+    border-bottom: 1px solid var(--dark-white);
+    :first-child {
+      border-top: 1px solid var(--dark-white);
+    }
+  }
+`;
+
+export const ProductImage = styled.img`
+  width: 100%;
+  &:hover {
+    opacity: 0.2;
+  }
+
+  @media (max-width: 512px) {
+    pointer-events: none;
+    width: 25%;
+    object-fit: cover;
+  }
+`;
+
+export const ProductInfo = styled.div`
+  width: 100%;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+export const HeartButton = styled(IconButton)`
+  &.MuiIconButton-root {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    @media (min-width: 513px) {
+      display: none;
+    }
+  }
 `;
 
 export const ProductName = styled.span`
@@ -78,30 +139,15 @@ export const ProductName = styled.span`
   font-weight: bold;
   font-size: 16px;
   color: var(--title-color);
-`;
 
-export const ProductHoverImg = styled.button`
-  width: 100%;
-  border: none;
-  background: none;
-
-  img:hover {
-    opacity: 0.2;
+  @media (max-width: 512px) {
+    width: 80%;
+    -webkit-line-clamp: 1;
+    text-align: center;
   }
-  div:hover {
-    position: absolute;
-    display: flex;
+  @media (max-width: 400px) {
+    text-align: start;
   }
-`;
-
-export const ProductImage = styled.img`
-  width: 100%;
-  object-fit: cover;
-`;
-
-export const ProductInfo = styled.div`
-  flex-direction: column;
-  gap: 0.5rem;
 `;
 
 export const ProductValues = styled.div`

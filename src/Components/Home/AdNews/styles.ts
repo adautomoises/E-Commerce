@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 800px;
+  height: 600px;
   margin-top: 5rem;
   background-color: var(--blue);
 `;
@@ -29,10 +29,13 @@ export const PosterImage = styled.div`
   @media (max-width: 768px) {
     max-width: 768px;
   }
+  @media (max-width: 512px) {
+    max-width: 512px;
+  }
 `;
 
 export const Title = styled.span`
-  width: 60%;
+  width: 50%;
 
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -44,6 +47,11 @@ export const Title = styled.span`
   font-weight: 500;
   font-size: 50px;
   color: white;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    -webkit-line-clamp: initial;
+  }
 `;
 
 export const SubTitle = styled.span`
@@ -66,8 +74,33 @@ export const Button = styled.button`
 
 export const Image = styled.img`
   position: absolute;
-  width: 60%;
+  max-width: 1440px;
+  width: 50%;
   top: -15%;
   right: -10%;
   pointer-events: none;
+
+  @media (max-width: 1440px) {
+    width: 60%;
+    top: -10%;
+    right: -12%;
+  }
+  @media (max-width: 1080px) {
+    width: 60%;
+    top: -10%;
+    right: -12%;
+  }
+  @media (max-width: 768px) {
+    position: static;
+    max-height: 40%;
+    width: 100%;
+    object-fit: contain;
+    text-align: center;
+  }
+  @media (max-width: 550px) {
+    max-height: 30%;
+  }
+  @media (max-width: 550px) {
+    max-height: 25%;
+  }
 `;
