@@ -18,6 +18,7 @@ export const Container = styled.div`
   }
   @media (max-width: 768px) {
     max-width: 768px;
+    gap: 2rem;
   }
 `;
 
@@ -25,6 +26,10 @@ export const Info = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 export const ProvideContainer = styled.div`
   display: flex;
@@ -43,6 +48,9 @@ export const ProvideTitle = styled.span`
 export const ProvideDescription = styled.span`
   width: 50%;
   text-align: center;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const LatestNews = styled.section`
@@ -55,11 +63,19 @@ export const LatestNewsTitle = styled.span`
   font-weight: 600;
   font-size: 34px;
   margin-bottom: 5rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+    font-size: 30px;
+  }
 `;
 export const LatestNewsContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 2rem;
+  }
 `;
 export const BrandContainer = styled.div`
   display: flex;
@@ -79,18 +95,30 @@ export const BrandInfo = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;
 export const BrandDate = styled.span`
   font-weight: 500;
   font-size: 18px;
   color: var(--text-color);
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 export const BrandTitle = styled.span`
   font-weight: 600;
   font-size: 22px;
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 export const BrandDescription = styled.span`
   font-size: 18px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const FeaturedProducts = styled.section`
@@ -103,17 +131,27 @@ export const FeaturedProductsTitle = styled.span`
   font-weight: 600;
   font-size: 34px;
   margin-bottom: 5rem;
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
+    font-size: 30px;
+  }
 `;
 export const FeaturedProductsContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 export const ProductCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `;
 export const ProductImageContainer = styled.div`
   width: 50%;
@@ -133,9 +171,22 @@ export const ProductInfo = styled.div`
   align-items: flex-start;
   flex-direction: column;
   gap: 0.25rem;
+  @media (max-width: 1024px) {
+    align-items: center;
+    width: 100%;
+  }
 `;
 export const ProductTitle = styled.span`
   font-size: 22px;
+  @media (max-width: 1024px) {
+    font-size: 18px;
+  }
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+  @media (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 export const ProductValues = styled.div`
   display: flex;
@@ -147,11 +198,23 @@ export const ProductCurrentPrice = styled.span`
   font-weight: 500;
   font-size: 20px;
   color: var(--red);
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+  @media (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 export const ProductPrice = styled.span`
   font-size: 20px;
   color: var(--text-color);
   text-decoration: line-through;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+  @media (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 
 export const SearchProduct = styled.div`

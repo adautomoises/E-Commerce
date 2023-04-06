@@ -3,19 +3,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: 1600px;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 1rem;
   width: 90%;
   position: absolute;
   left: 50%;
   transform: translate(-50%, -25%);
   overflow: hidden;
-  /* @media (max-width: 1080px) {
-    position: static;
-    transform: none;
-  } */
   @media (max-width: 1440px) {
     max-width: 1440px;
   }
@@ -24,6 +17,9 @@ export const Container = styled.div`
   }
   @media (max-width: 768px) {
     max-width: 768px;
+  }
+  @media (max-width: 320px) {
+    transform: translate(-50%, 0);
   }
 `;
 
@@ -34,7 +30,7 @@ export const ProductCard = styled.div`
 `;
 
 export const ProductTitle = styled.span`
-  width: 40%;
+  width: 80%;
   position: absolute;
   top: 5%;
   left: 10%;

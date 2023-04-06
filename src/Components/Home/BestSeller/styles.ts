@@ -119,7 +119,7 @@ export const HeartButton = styled(IconButton)`
     position: absolute;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 0 4px;
     @media (min-width: 513px) {
       display: none;
     }

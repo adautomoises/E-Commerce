@@ -7,6 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 5rem;
   gap: 5rem;
+  @media (max-width: 1024px) {
+    padding: 2rem;
+    gap: 2rem;
+  }
 `;
 
 export const ContactsContainer = styled.div`
@@ -16,11 +20,19 @@ export const ContactsContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+  }
 `;
 export const Contact = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  @media (max-width: 400px) {
+    align-items: center;
+  }
 `;
 export const ContactsTitleContainer = styled.span`
   display: flex;
@@ -37,15 +49,28 @@ export const ContactsDescription = styled.span`
   max-width: 250px;
   width: 100%;
   font-size: 12px;
+  @media (max-width: 1024px) {
+    max-width: 100%;
+  }
 `;
 export const Links = styled.div`
   max-width: 1920px;
   margin: 0 auto;
   padding: 0 3rem;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
 `;
 export const LinksContainer = styled.div`
   width: 100%;
@@ -54,6 +79,12 @@ export const LinksContainer = styled.div`
   align-items: flex-start;
   flex-direction: column;
   gap: 2rem;
+  @media (max-width: 1024px) {
+    gap: 1rem;
+  }
+  @media (max-width: 400px) {
+    align-items: center;
+  }
 `;
 export const LinksTitle = styled.span`
   font-size: 18px;
@@ -63,6 +94,9 @@ export const LinksItems = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
+  @media (max-width: 400px) {
+    align-items: center;
+  }
 `;
 
 export const Link = styled.a`
@@ -73,6 +107,9 @@ export const Footer = styled.div`
   padding: 1rem 3rem;
   @media (max-width: 768px) {
     padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 
   display: flex;

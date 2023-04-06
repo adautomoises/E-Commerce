@@ -1,4 +1,4 @@
-//import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Container,
   TopHeader,
@@ -11,11 +11,38 @@ import {
   DropdownContent,
 } from "./styles";
 import { ReactComponent as BlueIcon } from "../../Assets/blue_icon.svg";
-import { Button, IconButton } from "@mui/material";
+import { Button, IconButton, Box, SwipeableDrawer } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Menu, Person } from "@mui/icons-material";
+import { House, Menu, Person } from "@mui/icons-material";
+
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+
+import WidgetsIcon from "@mui/icons-material/Widgets";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import ContactsIcon from "@mui/icons-material/Contacts";
 
 export function HeaderComponent() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const handleToggleMobileMenu = () => {
+    setIsDrawerOpen(true);
+  };
+
+  const getIconList = (text: string) => {
+    switch (text) {
+      case "Produto":
+        return <WidgetsIcon />;
+      case "Promoções":
+        return <LocalOfferIcon />;
+      case "Contato":
+        return <ContactsIcon />;
+    }
+  };
+
   return (
     <Container>
       <TopHeader>
@@ -82,9 +109,45 @@ export function HeaderComponent() {
           </CategoryButton>
         </MenuItems>
         <MobileMenuItems>
-          <IconButton>
+          <IconButton onClick={handleToggleMobileMenu}>
             <Menu />
           </IconButton>
+          <SwipeableDrawer
+            anchor={"right"}
+            open={isDrawerOpen}
+            onOpen={() => {
+              setIsDrawerOpen(true);
+            }}
+            onClose={() => {
+              setIsDrawerOpen(false);
+            }}
+          >
+            <Box
+              sx={{ width: 250, textAlign: "center" }}
+              role="presentation"
+              onClick={() => {
+                setIsDrawerOpen(false);
+              }}
+              onKeyDown={() => {
+                setIsDrawerOpen(false);
+              }}
+            >
+              <Button disabled startIcon={<House />}>
+                Home
+              </Button>
+              <Divider />
+              <List>
+                {["Produto", "Promoções", "Contato"].map((text, index) => (
+                  <ListItem key={text} disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>{getIconList(text)}</ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </SwipeableDrawer>
         </MobileMenuItems>
       </BottomHeader>
     </Container>
