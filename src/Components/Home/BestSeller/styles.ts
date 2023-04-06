@@ -9,10 +9,6 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-top: 15rem;
-  @media (max-width: 1080px) {
-    margin-top: 15rem;
-    /* margin-top: 1rem; */
-  }
   @media (max-width: 1440px) {
     margin-top: 15rem;
     max-width: 1440px;
@@ -22,7 +18,7 @@ export const Container = styled.div`
     max-width: 1080px;
   }
   @media (max-width: 768px) {
-    margin-top: 15rem;
+    margin-top: 18rem;
     max-width: 768px;
   }
 `;
